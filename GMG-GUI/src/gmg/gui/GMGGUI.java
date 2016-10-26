@@ -17,8 +17,7 @@ import org.opencv.core.Core;
  */
 public class GMGGUI {
 
-    private static JFrame guiFrame;
-    private static GUI gui;
+ 
 
     /**
      * @param args the command line arguments
@@ -26,20 +25,34 @@ public class GMGGUI {
     public static void main(String[] args) {
         // TODO code application logic here
           System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-       createGUI();
-       UdpDummyClass udp = new UdpDummyClass();
-       udp.createCameraCapture();
+          
+    Panel p = new Panel();
+      //GUI g = new GUI(p);
+      //g.setVisible(true);
+       JFrame guiFrame = new JFrame("GUI");
+      GUI gui = new GUI(p);
+        guiFrame.setContentPane(gui);
+        guiFrame.setVisible(true);
+      
+       //UdpDummyClass udp = new UdpDummyClass();
+       //udp.createCameraCapture(p);
         
     }
 
-    private static void createGUI() {
-               guiFrame = new JFrame("Slider");
+    private void createGUI() {
+        
+   /*
+          panel = new Panel();
+        
+               guiFrame = new JFrame("GUI");
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.setSize(640, 480);
-        gui = new GUI();
+        gui = new GUI(panel);
         guiFrame.setContentPane(gui);
         guiFrame.setVisible(true);
+        */
        // gui.importclass(this);
+       
     }
     
 }

@@ -24,8 +24,9 @@ public class UdpDummyClass {
     
     
     
-    public void createCameraCapture(){
+    public void createCameraCapture(Panel panel){
         
+        this.cameraPanel = panel;
         // System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
    
             cameraFrame = new JFrame("Camera");
@@ -34,7 +35,7 @@ public class UdpDummyClass {
      
             cameraFrame.setSize(640, 480);
             cameraFrame.setBounds(0, 0, cameraFrame.getWidth(), cameraFrame.getHeight());
-            cameraPanel = new Panel();
+            //cameraPanel = new Panel();
             cameraFrame.setContentPane(cameraPanel);
             cameraFrame.setVisible(true);
         capture = new VideoCapture(0);

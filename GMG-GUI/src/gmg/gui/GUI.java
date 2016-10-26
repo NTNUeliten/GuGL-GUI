@@ -3,7 +3,10 @@ package gmg.gui;
 
 
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
 import jdk.nashorn.internal.scripts.JS;
+import org.opencv.core.Mat;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,8 +27,36 @@ public class GUI extends javax.swing.JPanel {
     
   
     
+    /**
+     * Creates new form GUI
+     * @param panel
+     */
+    public GUI(Panel panel) {
+        initComponents();
+        
+        //ledObjectTrack l = new ledObjectTrack();
+       cameraPanel.setVisible(true);
+        cameraPanel.setBackground(Color.red);
+        Mat image;
+   
+  
+   //cameraPanel.add(panel);
+           
+         
+     
+
+    }
+    
 
     int setValueIncrement = 5;
+    
+    
+    public void setImage(BufferedImage image){
+        
+      
+   
+     
+    }
     
 
     public void setHueVal(int hueVal) {
@@ -41,19 +72,7 @@ public class GUI extends javax.swing.JPanel {
     public void setValVal(int valVal) {
         this.valVal = valVal;
     }
-  
-    /**
-     * Creates new form GUI
-     */
-    public GUI() {
-        initComponents();
-        
-        //ledObjectTrack l = new ledObjectTrack();
-       
-        
 
-    }
-    
     public double getBrightnessValue(){
         
         double temp = brightnessSlider.getValue();
@@ -180,7 +199,7 @@ public class GUI extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         addValuesBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        cameraPanel = new Panel();
 
         brightnessSlider.setMaximum(400);
         brightnessSlider.setToolTipText("");
@@ -500,14 +519,21 @@ public class GUI extends javax.swing.JPanel {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        System.out.print("kake");
+        cameraPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cameraPanelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout cameraPanelLayout = new javax.swing.GroupLayout(cameraPanel);
+        cameraPanel.setLayout(cameraPanelLayout);
+        cameraPanelLayout.setHorizontalGroup(
+            cameraPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 674, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        cameraPanelLayout.setVerticalGroup(
+            cameraPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 413, Short.MAX_VALUE)
         );
 
@@ -516,18 +542,19 @@ public class GUI extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cameraPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(25, 25, 25)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -658,7 +685,7 @@ public class GUI extends javax.swing.JPanel {
         if(valVal < valueMinSlider.getValue()){
             valueMinSlider.setValue((valVal-setValueIncrement));
         }
-        messageField.setText("New values added");
+       // messageField.setText("New values added");
         
         
     }//GEN-LAST:event_addValuesBtnActionPerformed
@@ -670,6 +697,12 @@ public class GUI extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void cameraPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cameraPanelMouseClicked
+        // TODO add your handling code here:
+        
+        System.out.println("klikk");
+    }//GEN-LAST:event_cameraPanelMouseClicked
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -677,6 +710,7 @@ public class GUI extends javax.swing.JPanel {
     private javax.swing.JButton addValuesBtn;
     private javax.swing.JSlider brightnessSlider;
     private javax.swing.JTextField brightnessValue;
+    private javax.swing.JPanel cameraPanel;
     private javax.swing.JSlider contrastSlider;
     private javax.swing.JSlider hueMaxSlider;
     private javax.swing.JTextField hueMaxValue;
@@ -697,7 +731,6 @@ public class GUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField saturationMaxValue;
     private javax.swing.JSlider saturationMinSlider;
     private javax.swing.JTextField saturationMinValue;
