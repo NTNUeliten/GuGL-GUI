@@ -7,6 +7,7 @@ package gmg.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javafx.scene.Camera;
 import javax.swing.JFrame;
 import org.opencv.core.Core;
@@ -35,7 +36,7 @@ public class GMGGUI {
        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
      
-    
+
       p.setBackground(Color.red); 
       
      gui.addPanel(p);
@@ -43,7 +44,11 @@ public class GMGGUI {
      
      gui.pack();
     gui.setVisible(true);
-  
+    
+        KeyboardInput k = new KeyboardInput();
+        k.run();
+       
+     
       
         /*
         JFrame guiFrame = new JFrame("GUI");

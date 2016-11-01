@@ -77,22 +77,8 @@ public class GUI extends javax.swing.JPanel {
         this.valVal = valVal;
     }
 
-    public double getBrightnessValue(){
-        
-        double temp = brightnessSlider.getValue();
-        double sliderValue = temp/100;
-        
-        String text = String.valueOf(sliderValue);
-        brightnessValue.setText(text);
-        return sliderValue;
-    }
-     public double getContrastValue(){
-        
-        double temp = contrastSlider.getValue();
-        double sliderValue = temp/100;
-       
-        return sliderValue;
-    }
+ 
+
      
      public int getHueMinValue(){
          
@@ -173,15 +159,10 @@ public class GUI extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        brightnessSlider = new javax.swing.JSlider();
         valueMaxSlider = new javax.swing.JSlider();
-        contrastSlider = new javax.swing.JSlider();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         hueMinSlider = new javax.swing.JSlider();
         hueMaxSlider = new javax.swing.JSlider();
         jLabel3 = new javax.swing.JLabel();
-        brightnessValue = new javax.swing.JTextField();
         hueMaxValue = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         hueMinValue = new javax.swing.JTextField();
@@ -203,11 +184,8 @@ public class GUI extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         addValuesBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         cameraPanel = new Panel();
-
-        brightnessSlider.setMaximum(400);
-        brightnessSlider.setToolTipText("");
-        brightnessSlider.setValue(100);
 
         valueMaxSlider.setMaximum(255);
         valueMaxSlider.setValue(206);
@@ -216,13 +194,6 @@ public class GUI extends javax.swing.JPanel {
                 valueMaxSliderStateChanged(evt);
             }
         });
-
-        contrastSlider.setMaximum(200);
-        contrastSlider.setValue(100);
-
-        jLabel1.setText("Brightness");
-
-        jLabel2.setText("Contrast");
 
         hueMinSlider.setMaximum(200);
         hueMinSlider.setToolTipText("");
@@ -242,13 +213,6 @@ public class GUI extends javax.swing.JPanel {
         });
 
         jLabel3.setText("Hue min");
-
-        brightnessValue.setText("1000");
-        brightnessValue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                brightnessValueActionPerformed(evt);
-            }
-        });
 
         hueMaxValue.setText("1000");
         hueMaxValue.addActionListener(new java.awt.event.ActionListener() {
@@ -378,38 +342,16 @@ public class GUI extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setText("Settings");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(hueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(hueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(hueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(hueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel9)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(valueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(valueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel10)
-                                .addComponent(valueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(valueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -425,19 +367,6 @@ public class GUI extends javax.swing.JPanel {
                             .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(11, 11, 11)
-                                        .addComponent(brightnessSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel1)
-                                            .addComponent(contrastSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(brightnessValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(11, 11, 11))))
                             .addComponent(jLabel7)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(SaturationMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -448,13 +377,43 @@ public class GUI extends javax.swing.JPanel {
                                     .addComponent(jLabel8)
                                     .addComponent(saturationMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(saturationMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(saturationMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(hueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(hueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(hueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(hueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(valueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(valueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel10)
+                                        .addComponent(valueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(valueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,7 +439,7 @@ public class GUI extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SaturationMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(saturationMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(29, 29, 29)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -493,34 +452,20 @@ public class GUI extends javax.swing.JPanel {
                             .addComponent(valueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(valueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(valueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(brightnessSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28)
-                        .addComponent(brightnessValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(contrastSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(34, 34, 34)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(importHue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(importSaturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(importValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(importValueBtn)
-                                    .addComponent(addValuesBtn))
-                                .addGap(17, 17, 17)
-                                .addComponent(jButton1)))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(126, 126, 126)
+                .addComponent(jButton2)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(importHue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(importSaturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(importValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(importValueBtn)
+                    .addComponent(addValuesBtn))
+                .addGap(17, 17, 17)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         System.out.print("kake");
@@ -548,126 +493,33 @@ public class GUI extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cameraPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(19, 19, 19)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void brightnessValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brightnessValueActionPerformed
-        // TODO add your handling code here:
-        brightnessValue.setText("kake");
-    }//GEN-LAST:event_brightnessValueActionPerformed
-
-    private void hueMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hueMaxValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hueMaxValueActionPerformed
-
-    private void hueMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hueMinValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hueMinValueActionPerformed
-
-    private void saturationMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturationMaxValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_saturationMaxValueActionPerformed
-
-    private void saturationMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturationMinValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_saturationMinValueActionPerformed
-
-    private void valueMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueMaxValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_valueMaxValueActionPerformed
-
-    private void valueMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueMinValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_valueMinValueActionPerformed
-
-    private void importHueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importHueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_importHueActionPerformed
-
-    private void importSaturationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importSaturationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_importSaturationActionPerformed
-
-    private void importValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_importValueActionPerformed
-
-    private void importValueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importValueBtnActionPerformed
+    private void cameraPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cameraPanelMouseClicked
         // TODO add your handling code here:
         
-       
-     String hue = String.valueOf(hueVal);
-      String sat = String.valueOf(satVal);
-       String val = String.valueOf(valVal);
-      
-     
-       importHue.setText(hue);
-       importSaturation.setText(sat);
-       importValue.setText(val);
-       
-       
-    }//GEN-LAST:event_importValueBtnActionPerformed
+        System.out.println("klikk");
+    }//GEN-LAST:event_cameraPanelMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-        
-        hueMinSlider.setValue(hueVal-6);
-        hueMaxSlider.setValue(hueVal+6);
-        
-        saturationMinSlider.setValue(satVal-50);
-        SaturationMaxSlider.setValue(satVal+50);
-        
-        valueMinSlider.setValue(valVal-30);
-        valueMaxSlider.setValue(valVal+30);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void hueMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hueMinSliderStateChanged
-        // TODO add your handling code here:
-        hueMinValue.setText(String.valueOf(hueMinSlider.getValue()));
-    }//GEN-LAST:event_hueMinSliderStateChanged
-
-    private void hueMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hueMaxSliderStateChanged
-        // TODO add your handling code here:
-         hueMaxValue.setText(String.valueOf(hueMaxSlider.getValue()));
-    }//GEN-LAST:event_hueMaxSliderStateChanged
-
-    private void saturationMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_saturationMinSliderStateChanged
-        // TODO add your handling code here:
-        saturationMinValue.setText(String.valueOf(saturationMinSlider.getValue()));
-    }//GEN-LAST:event_saturationMinSliderStateChanged
-
-    private void SaturationMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SaturationMaxSliderStateChanged
-        // TODO add your handling code here:
-        saturationMaxValue.setText(String.valueOf(SaturationMaxSlider.getValue()));
-    }//GEN-LAST:event_SaturationMaxSliderStateChanged
-
-    private void valueMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valueMinSliderStateChanged
-        // TODO add your handling code here:
-        valueMinValue.setText(String.valueOf(valueMinSlider.getValue()));
-    }//GEN-LAST:event_valueMinSliderStateChanged
-
-    private void valueMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valueMaxSliderStateChanged
-        // TODO add your handling code here:
-       valueMaxValue.setText(String.valueOf(valueMaxSlider.getValue()));
-    }//GEN-LAST:event_valueMaxSliderStateChanged
+        // udpRecive.updateSettings();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void addValuesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addValuesBtnActionPerformed
         // TODO add your handling code here:
-        
 
         // Setting a new maxvalue
         if(hueVal > hueMaxSlider.getValue()) {
@@ -679,7 +531,7 @@ public class GUI extends javax.swing.JPanel {
         if(valVal > valueMaxSlider.getValue()){
             valueMaxSlider.setValue((valVal+setValueIncrement));
         }
-      
+
         //Setting a new min value
         if(hueVal < hueMinSlider.getValue()) {
             hueMinSlider.setValue(hueVal-setValueIncrement);
@@ -690,33 +542,106 @@ public class GUI extends javax.swing.JPanel {
         if(valVal < valueMinSlider.getValue()){
             valueMinSlider.setValue((valVal-setValueIncrement));
         }
-       // messageField.setText("New values added");
-        
-        
+        // messageField.setText("New values added");
     }//GEN-LAST:event_addValuesBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        // udpRecive.updateSettings();
-      
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void cameraPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cameraPanelMouseClicked
+        hueMinSlider.setValue(hueVal-6);
+        hueMaxSlider.setValue(hueVal+6);
+
+        saturationMinSlider.setValue(satVal-50);
+        SaturationMaxSlider.setValue(satVal+50);
+
+        valueMinSlider.setValue(valVal-30);
+        valueMaxSlider.setValue(valVal+30);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void importValueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importValueBtnActionPerformed
         // TODO add your handling code here:
-        
-        System.out.println("klikk");
-    }//GEN-LAST:event_cameraPanelMouseClicked
+
+        String hue = String.valueOf(hueVal);
+        String sat = String.valueOf(satVal);
+        String val = String.valueOf(valVal);
+
+        importHue.setText(hue);
+        importSaturation.setText(sat);
+        importValue.setText(val);
+    }//GEN-LAST:event_importValueBtnActionPerformed
+
+    private void importValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_importValueActionPerformed
+
+    private void importSaturationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importSaturationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_importSaturationActionPerformed
+
+    private void importHueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importHueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_importHueActionPerformed
+
+    private void valueMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueMinValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_valueMinValueActionPerformed
+
+    private void valueMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valueMinSliderStateChanged
+        // TODO add your handling code here:
+        valueMinValue.setText(String.valueOf(valueMinSlider.getValue()));
+    }//GEN-LAST:event_valueMinSliderStateChanged
+
+    private void valueMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueMaxValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_valueMaxValueActionPerformed
+
+    private void SaturationMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SaturationMaxSliderStateChanged
+        // TODO add your handling code here:
+        saturationMaxValue.setText(String.valueOf(SaturationMaxSlider.getValue()));
+    }//GEN-LAST:event_SaturationMaxSliderStateChanged
+
+    private void saturationMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturationMinValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saturationMinValueActionPerformed
+
+    private void saturationMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_saturationMinSliderStateChanged
+        // TODO add your handling code here:
+        saturationMinValue.setText(String.valueOf(saturationMinSlider.getValue()));
+    }//GEN-LAST:event_saturationMinSliderStateChanged
+
+    private void saturationMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturationMaxValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saturationMaxValueActionPerformed
+
+    private void hueMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hueMinValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hueMinValueActionPerformed
+
+    private void hueMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hueMaxValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hueMaxValueActionPerformed
+
+    private void hueMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hueMaxSliderStateChanged
+        // TODO add your handling code here:
+        hueMaxValue.setText(String.valueOf(hueMaxSlider.getValue()));
+    }//GEN-LAST:event_hueMaxSliderStateChanged
+
+    private void hueMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hueMinSliderStateChanged
+        // TODO add your handling code here:
+        hueMinValue.setText(String.valueOf(hueMinSlider.getValue()));
+    }//GEN-LAST:event_hueMinSliderStateChanged
+
+    private void valueMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valueMaxSliderStateChanged
+        // TODO add your handling code here:
+        valueMaxValue.setText(String.valueOf(valueMaxSlider.getValue()));
+    }//GEN-LAST:event_valueMaxSliderStateChanged
 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSlider SaturationMaxSlider;
     private javax.swing.JButton addValuesBtn;
-    private javax.swing.JSlider brightnessSlider;
-    private javax.swing.JTextField brightnessValue;
     private javax.swing.JPanel cameraPanel;
-    private javax.swing.JSlider contrastSlider;
     private javax.swing.JSlider hueMaxSlider;
     private javax.swing.JTextField hueMaxValue;
     private javax.swing.JSlider hueMinSlider;
@@ -727,10 +652,9 @@ public class GUI extends javax.swing.JPanel {
     private javax.swing.JButton importValueBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
