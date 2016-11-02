@@ -5,14 +5,14 @@
  */
 package gmg.gui;
 
-import static com.sun.xml.internal.ws.model.RuntimeModeler.PORT;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import static sun.util.locale.provider.LocaleProviderAdapter.Type.HOST;
+
 
 /**
  *

@@ -10,9 +10,8 @@ package gmg.gui;
  * @author Olav Rune
  */
 public class GuiFrame extends javax.swing.JFrame {
-    
-       
-    int hueVal;    
+
+    int hueVal;
     int satVal;
     int valVal;
     private UDPsend udp;
@@ -23,13 +22,14 @@ public class GuiFrame extends javax.swing.JFrame {
     public GuiFrame() {
         initComponents();
     }
-    
-    public void addPanel(Panel p){
-        
+
+    public void addPanel(Panel p) {
+
         cameraPanel.add(p);
     }
-    public void addUDPSocket(UDPsend udp){
-        
+
+    public void addUDPSocket(UDPsend udp) {
+
         this.udp = udp;
     }
 
@@ -501,42 +501,42 @@ public class GuiFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        hueMinSlider.setValue(hueVal-6);
-        hueMaxSlider.setValue(hueVal+6);
+        hueMinSlider.setValue(hueVal - 6);
+        hueMaxSlider.setValue(hueVal + 6);
 
-        saturationMinSlider.setValue(satVal-50);
-        SaturationMaxSlider.setValue(satVal+50);
+        saturationMinSlider.setValue(satVal - 50);
+        SaturationMaxSlider.setValue(satVal + 50);
 
-        valueMinSlider.setValue(valVal-30);
-        valueMaxSlider.setValue(valVal+30);
+        valueMinSlider.setValue(valVal - 30);
+        valueMaxSlider.setValue(valVal + 30);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     int setValueIncrement = 5;
-    
+
     private void addValuesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addValuesBtnActionPerformed
         // TODO add your handling code here:
 
         // Setting a new maxvalue
-        if(hueVal > hueMaxSlider.getValue()) {
-            hueMaxSlider.setValue(hueVal+setValueIncrement);
+        if (hueVal > hueMaxSlider.getValue()) {
+            hueMaxSlider.setValue(hueVal + setValueIncrement);
         }
-        if(satVal > SaturationMaxSlider.getValue()){
-            SaturationMaxSlider.setValue(satVal+setValueIncrement);
+        if (satVal > SaturationMaxSlider.getValue()) {
+            SaturationMaxSlider.setValue(satVal + setValueIncrement);
         }
-        if(valVal > valueMaxSlider.getValue()){
-            valueMaxSlider.setValue((valVal+setValueIncrement));
+        if (valVal > valueMaxSlider.getValue()) {
+            valueMaxSlider.setValue((valVal + setValueIncrement));
         }
 
         //Setting a new min value
-        if(hueVal < hueMinSlider.getValue()) {
-            hueMinSlider.setValue(hueVal-setValueIncrement);
+        if (hueVal < hueMinSlider.getValue()) {
+            hueMinSlider.setValue(hueVal - setValueIncrement);
         }
-        if(satVal < saturationMinSlider.getValue()){
-            saturationMinSlider.setValue(satVal-setValueIncrement);
+        if (satVal < saturationMinSlider.getValue()) {
+            saturationMinSlider.setValue(satVal - setValueIncrement);
         }
-        if(valVal < valueMinSlider.getValue()){
-            valueMinSlider.setValue((valVal-setValueIncrement));
+        if (valVal < valueMinSlider.getValue()) {
+            valueMinSlider.setValue((valVal - setValueIncrement));
         }
         // messageField.setText("New values added");
 
@@ -548,8 +548,22 @@ public class GuiFrame extends javax.swing.JFrame {
 
     private void sendValuesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendValuesButtonActionPerformed
         // TODO add your handling code here:
-        byte[] b = new byte[]{1,2,3};
-        udp.sendParam(b);
+
+        udp.sendParam(getCurrentvalues());
+
+        /*
+        int i = 255;
+        byte b = (byte) i;
+        int s = b & (0xff);
+    
+        System.out.println("" + i + " " + b +" "  +s);
+        
+        byte signedByte = b;
+int unsignedByte = signedByte & (0xff);
+
+System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
+        */
+        
     }//GEN-LAST:event_sendValuesButtonActionPerformed
 
     /**
@@ -620,4 +634,22 @@ public class GuiFrame extends javax.swing.JFrame {
     private javax.swing.JSlider valueMinSlider;
     private javax.swing.JTextField valueMinValue;
     // End of variables declaration//GEN-END:variables
+
+    private byte[] getCurrentvalues() {
+        
+        
+        byte[] returnByte = new byte[8];
+
+        returnByte[0] = (byte) hueMinSlider.getValue();
+        
+        returnByte[1] = (byte) hueMaxSlider.getValue();
+        returnByte[2] = (byte) saturationMinSlider.getValue();
+        returnByte[3] = (byte) SaturationMaxSlider.getValue();
+        returnByte[4] = (byte) valueMinSlider.getValue();
+        returnByte[5] = (byte) valueMaxSlider.getValue();
+   
+       
+
+        return returnByte;
+    }
 }
