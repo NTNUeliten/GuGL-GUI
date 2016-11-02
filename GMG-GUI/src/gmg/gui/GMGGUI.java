@@ -30,6 +30,8 @@ public class GMGGUI {
         //GUI g = new GUI(p);
         //g.setVisible(true);
         
+        UDPsend udpSend = new UDPsend(4000, "localhost");
+        
       GuiFrame gui = new GuiFrame();
       gui.setSize(200, 200);
         //gui.setLayout(new BorderLayout());
@@ -40,6 +42,7 @@ public class GMGGUI {
       p.setBackground(Color.red); 
       
      gui.addPanel(p);
+     gui.addUDPSocket(udpSend);
     //gui.add(p,BorderLayout.CENTER);
      
      gui.pack();
@@ -49,10 +52,7 @@ public class GMGGUI {
         k.run();
        
         
-        UDPsend udpSend = new UDPsend(4000, "localhost");
-        byte[] bytesToSend = new byte[]{1,2,3};
-        udpSend.sendParam(bytesToSend);
-        
+    
      
       
         /*

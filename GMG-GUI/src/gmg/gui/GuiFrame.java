@@ -15,6 +15,7 @@ public class GuiFrame extends javax.swing.JFrame {
     int hueVal;    
     int satVal;
     int valVal;
+    private UDPsend udp;
 
     /**
      * Creates new form GuiFrame
@@ -26,6 +27,10 @@ public class GuiFrame extends javax.swing.JFrame {
     public void addPanel(Panel p){
         
         cameraPanel.add(p);
+    }
+    public void addUDPSocket(UDPsend udp){
+        
+        this.udp = udp;
     }
 
     /**
@@ -66,6 +71,7 @@ public class GuiFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         cameraPanel = new Panel();
+        sendValuesButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -240,6 +246,13 @@ public class GuiFrame extends javax.swing.JFrame {
             .addGap(0, 436, Short.MAX_VALUE)
         );
 
+        sendValuesButton.setText("Send values");
+        sendValuesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendValuesButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -249,7 +262,10 @@ public class GuiFrame extends javax.swing.JFrame {
                 .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sendValuesButton))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
@@ -364,7 +380,9 @@ public class GuiFrame extends javax.swing.JFrame {
                     .addComponent(importValueBtn)
                     .addComponent(addValuesBtn))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(sendValuesButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -528,6 +546,12 @@ public class GuiFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void sendValuesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendValuesButtonActionPerformed
+        // TODO add your handling code here:
+        byte[] b = new byte[]{1,2,3};
+        udp.sendParam(b);
+    }//GEN-LAST:event_sendValuesButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -590,6 +614,7 @@ public class GuiFrame extends javax.swing.JFrame {
     private javax.swing.JTextField saturationMaxValue;
     private javax.swing.JSlider saturationMinSlider;
     private javax.swing.JTextField saturationMinValue;
+    private javax.swing.JButton sendValuesButton;
     private javax.swing.JSlider valueMaxSlider;
     private javax.swing.JTextField valueMaxValue;
     private javax.swing.JSlider valueMinSlider;
