@@ -26,13 +26,15 @@ public class UDPsend {
     private byte[] outByte;
 
     public UDPsend(int port, String ipAddr) {
-
+        
+    this.PORT = port;
+    
         try {
             HOST = InetAddress.getByName(ipAddr);
         } catch (UnknownHostException ex) {
             System.out.println("Exeption in generating InetAddress in UDPSend...  n/" + ex.getMessage());
         }
-        this.PORT = port;
+    
         try {
             s = new DatagramSocket();
         } catch (SocketException ex) {

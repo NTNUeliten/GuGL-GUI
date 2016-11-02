@@ -27,50 +27,41 @@ public class GMGGUI {
 
         Panel p = new Panel();
         p.setSize(600, 400);
-        //GUI g = new GUI(p);
-        //g.setVisible(true);
         
-        UDPsend udpSend = new UDPsend(4000, "localhost");
         
-      GuiFrame gui = new GuiFrame();
-      gui.setSize(200, 200);
-        //gui.setLayout(new BorderLayout());
-       gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      
-     
+        
 
-      p.setBackground(Color.red); 
-      
-     gui.addPanel(p);
-     gui.addUDPSocket(udpSend);
-    //gui.add(p,BorderLayout.CENTER);
-     
-     gui.pack();
-    gui.setVisible(true);
-    
+        UDPsend udpSend = new UDPsend(4000, "localhost");
+        UdpRecive udpRecive = new UdpRecive(6000);
+
+        GuiFrame gui = new GuiFrame();
+        gui.setSize(200, 200);
+        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        gui.addPanel(p);
+        gui.addUDPSendSocket(udpSend);
+        gui.addUDPReciveSocket(udpRecive);
+        
+        
+
+        gui.pack();
+        gui.setVisible(true);
+
         KeyboardInput k = new KeyboardInput();
         k.run();
-       
-        
-    
-     
-      
-        /*
-        JFrame guiFrame = new JFrame("GUI");
-        GUI gui = new GUI(p);
-        //guiFrame.setContentPane(gui);
-        p.setBackground(Color.red);
-        guiFrame.add(gui);
-      
-        //guiFrame.add(p);
-       
-        guiFrame.setVisible(true);
-        //UdpDummyClass udp = new UdpDummyClass();
-        //udp.createCameraCapture(p);
-        */
 
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private void createGUI() {
 
         /*

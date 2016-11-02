@@ -1,10 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gmg.gui;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.SocketException;
+import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -14,15 +16,32 @@ import org.opencv.highgui.VideoCapture;
  *
  * @author Olav Rune
  */
-public class UdpDummyClass {
+public class UdpRecive {
 
     private JFrame cameraFrame;
     private Panel cameraPanel;
     private VideoCapture capture;
     private Mat webcam_image;
+    private final int PORT;
+    private static final int PARAMS = 6;
+    private DatagramSocket socket;
+    private DatagramPacket datagram;
     
     
-    
+       public UdpRecive(int PORT) {
+        
+        this.PORT = PORT;
+       byte[] buf = new byte[PARAMS];
+        datagram = new DatagramPacket(buf, buf.length);
+        try {
+            socket = new DatagramSocket(this.PORT);
+        } catch (SocketException ex) {
+            Logger.getLogger(UdpRecive.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+       // createGUI();
+     
+    }
     
     public void createCameraCapture(Panel panel){
         
@@ -63,8 +82,11 @@ public class UdpDummyClass {
             }
     }
     
+    
+        public byte[] receiveParam() throws IOException{
+        socket.receive(datagram);
+        byte[] datagramData = datagram.getData();
+        return datagramData;
+    }
+    
 }
-
-
-
-
