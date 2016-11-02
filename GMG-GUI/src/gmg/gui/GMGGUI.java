@@ -48,6 +48,11 @@ public class GMGGUI {
         KeyboardInput k = new KeyboardInput();
         k.run();
        
+        
+        UDPsend udpSend = new UDPsend(4000, "localhost");
+        byte[] bytesToSend = new byte[]{1,2,3};
+        udpSend.sendParam(bytesToSend);
+        
      
       
         /*
