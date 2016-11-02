@@ -746,7 +746,9 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         returnByte[3] = (byte) SaturationMaxSlider.getValue();
         returnByte[4] = (byte) valueMinSlider.getValue();
         returnByte[5] = (byte) valueMaxSlider.getValue();
+    
         returnByte[6] = (byte) (videoStreamActive?1:0);
+        System.out.println(returnByte[6]);
    
        
 
