@@ -19,9 +19,14 @@ public class GuiFrame extends javax.swing.JFrame {
     int satVal;
     int valVal;
     boolean videoStreamActive;
+    boolean manualModeActive;
     private UDPsend udpSend;
     private UdpRecive UdpRecive;
     
+    int upValueFromGui;
+    int downValueFromGui;
+    int leftValueFromGui;
+    int rightValueFromGui;
 
     /**
      * Creates new form GuiFrame
@@ -39,8 +44,9 @@ public class GuiFrame extends javax.swing.JFrame {
 
         this.udpSend = udp;
     }
-    public void addUDPReciveSocket(UdpRecive udpRecive){
-        
+
+    public void addUDPReciveSocket(UdpRecive udpRecive) {
+
         this.UdpRecive = udpRecive;
     }
 
@@ -79,12 +85,15 @@ public class GuiFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         addValuesBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        LeftButton = new javax.swing.JButton();
         cameraPanel = new Panel();
         sendValuesButton = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        UpdateButton = new javax.swing.JButton();
+        VideoOnOffToggle = new javax.swing.JToggleButton();
+        RightButton = new javax.swing.JButton();
+        manualModeToggle = new javax.swing.JToggleButton();
+        UpButton = new javax.swing.JButton();
+        DownButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -239,14 +248,22 @@ public class GuiFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Settings");
 
-        jButton2.setText("Manual");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        LeftButton.setText("<<");
+        LeftButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LeftButtonMouseClicked(evt);
             }
         });
-
-        jButton3.setText("jButton3");
+        LeftButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LeftButtonActionPerformed(evt);
+            }
+        });
+        LeftButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LeftButtonKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout cameraPanelLayout = new javax.swing.GroupLayout(cameraPanel);
         cameraPanel.setLayout(cameraPanelLayout);
@@ -266,27 +283,83 @@ public class GuiFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("update");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        UpdateButton.setText("update from UDP");
+        UpdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                UpdateButtonActionPerformed(evt);
             }
         });
 
-        jToggleButton1.setText("Video on");
-        jToggleButton1.addChangeListener(new javax.swing.event.ChangeListener() {
+        VideoOnOffToggle.setText("Video on");
+        VideoOnOffToggle.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jToggleButton1StateChanged(evt);
+                VideoOnOffToggleStateChanged(evt);
             }
         });
-        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        VideoOnOffToggle.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButton1MouseClicked(evt);
+                VideoOnOffToggleMouseClicked(evt);
             }
         });
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        VideoOnOffToggle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                VideoOnOffToggleActionPerformed(evt);
+            }
+        });
+
+        RightButton.setText(">>");
+        RightButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RightButtonMouseClicked(evt);
+            }
+        });
+
+        manualModeToggle.setText("Manual Mode");
+        manualModeToggle.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                manualModeToggleStateChanged(evt);
+            }
+        });
+        manualModeToggle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                manualModeToggleMouseClicked(evt);
+            }
+        });
+        manualModeToggle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manualModeToggleActionPerformed(evt);
+            }
+        });
+
+        UpButton.setText("^");
+        UpButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UpButtonMouseClicked(evt);
+            }
+        });
+        UpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpButtonActionPerformed(evt);
+            }
+        });
+        UpButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UpButtonKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                UpButtonKeyTyped(evt);
+            }
+        });
+
+        DownButton.setText("v");
+        DownButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DownButtonMouseClicked(evt);
+            }
+        });
+        DownButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DownButtonActionPerformed(evt);
             }
         });
 
@@ -299,75 +372,83 @@ public class GuiFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, Short.MAX_VALUE))
+                        .addGap(141, 214, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jToggleButton1)
-                            .addComponent(jButton4))
-                        .addGap(135, 135, 135)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(LeftButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sendValuesButton))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(SaturationMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(saturationMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(saturationMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(saturationMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(hueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(hueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(valueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(valueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(valueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(valueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(importHue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(importSaturation, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(importValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(DownButton)
+                            .addComponent(UpButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(RightButton)
+                        .addGap(35, 35, 35)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(SaturationMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(saturationMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addComponent(saturationMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(saturationMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(hueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(hueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel6)
+                                .addComponent(hueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(hueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel9)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(valueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(valueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10)
+                                .addComponent(valueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(valueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(importValueBtn)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(addValuesBtn))))
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(5, 5, 5)
+                                    .addComponent(VideoOnOffToggle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(importValueBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(importHue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(importSaturation, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(importValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(manualModeToggle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(addValuesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sendValuesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(5, 5, 5)
+                            .addComponent(UpdateButton)))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(UpButton)
+                .addGap(136, 136, 136))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -411,36 +492,35 @@ public class GuiFrame extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(valueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(valueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(valueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                            .addComponent(valueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(importHue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(importSaturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(importValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(importValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(471, 471, 471)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(importValueBtn)
                             .addComponent(addValuesBtn))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
                             .addComponent(sendValuesButton))
-                        .addGap(18, 18, 18)
+                        .addGap(13, 13, 13)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
-                        .addContainerGap(56, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jToggleButton1)
-                        .addGap(126, 126, 126))))
+                            .addComponent(VideoOnOffToggle)
+                            .addComponent(manualModeToggle)
+                            .addComponent(RightButton)
+                            .addComponent(LeftButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(UpdateButton)
+                            .addComponent(DownButton))))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Engravers MT", 1, 36)); // NOI18N
@@ -453,12 +533,11 @@ public class GuiFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1359, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -595,10 +674,6 @@ public class GuiFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_addValuesBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void sendValuesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendValuesButtonActionPerformed
         // TODO add your handling code here:
 
@@ -615,53 +690,130 @@ public class GuiFrame extends javax.swing.JFrame {
 int unsignedByte = signedByte & (0xff);
 
 System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
-        */
-        
+         */
+
     }//GEN-LAST:event_sendValuesButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
         try {
             // TODO add your handling code here:
 
             byte[] b = UdpRecive.receiveParam();
-     
+
         } catch (IOException ex) {
             Logger.getLogger(GuiFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+
+    }//GEN-LAST:event_UpdateButtonActionPerformed
+
+    private void VideoOnOffToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VideoOnOffToggleActionPerformed
         // TODO add your handling code here:
-        
 
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jToggleButton1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jToggleButton1StateChanged
+    }//GEN-LAST:event_VideoOnOffToggleActionPerformed
+
+    private void VideoOnOffToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_VideoOnOffToggleStateChanged
         // TODO add your handling code here:
-        
-      
-    }//GEN-LAST:event_jToggleButton1StateChanged
 
-    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+
+    }//GEN-LAST:event_VideoOnOffToggleStateChanged
+
+    private void VideoOnOffToggleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VideoOnOffToggleMouseClicked
         // TODO add your handling code here:
-          
-        if(jToggleButton1.isSelected()){
-        videoStreamActive = true;
-    }
-        else {
-        videoStreamActive = false;
-                }
+
+        if (VideoOnOffToggle.isSelected()) {
+            videoStreamActive = true;
+        } else {
+            videoStreamActive = false;
+        }
         /*
         if(videoStreamActive == false){
             videoStreamActive = true;
         }
         else
             videoStreamActive = false;
-        */
-        System.out.println(videoStreamActive);
-    }//GEN-LAST:event_jToggleButton1MouseClicked
+         */
+        //System.out.println(videoStreamActive);
+    }//GEN-LAST:event_VideoOnOffToggleMouseClicked
+
+    private void manualModeToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_manualModeToggleStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manualModeToggleStateChanged
+
+    private void manualModeToggleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manualModeToggleMouseClicked
+        // TODO add your handling code here:
+
+        if (manualModeToggle.isSelected()) {
+            manualModeActive = true;
+            resetValues();      // Resetting values in case some shitface have
+                                // pressed manual buttons with automatic mode activated
+        } else {
+            manualModeActive = false;
+        }
+    }//GEN-LAST:event_manualModeToggleMouseClicked
+
+    private void manualModeToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manualModeToggleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manualModeToggleActionPerformed
+
+    private void LeftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeftButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LeftButtonActionPerformed
+
+    private void UpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpButtonActionPerformed
+
+    private void DownButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DownButtonActionPerformed
+
+    private void UpButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UpButtonKeyPressed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_UpButtonKeyPressed
+
+    private void UpButtonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UpButtonKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpButtonKeyTyped
+
+    private void UpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpButtonMouseClicked
+        // TODO add your handling code here:
+        
+        if(manualModeActive){
+            upValueFromGui++;
+        }
+    }//GEN-LAST:event_UpButtonMouseClicked
+
+    private void DownButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DownButtonMouseClicked
+        // TODO add your handling code here:
+        
+         if(manualModeActive){
+            downValueFromGui++;
+        }
+    }//GEN-LAST:event_DownButtonMouseClicked
+
+    private void RightButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RightButtonMouseClicked
+        // TODO add your handling code here:
+        
+         if(manualModeActive){
+            rightValueFromGui++;
+        }
+    }//GEN-LAST:event_RightButtonMouseClicked
+
+    private void LeftButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LeftButtonKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LeftButtonKeyPressed
+
+    private void LeftButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LeftButtonMouseClicked
+        // TODO add your handling code here:
+         if(manualModeActive){
+            leftValueFromGui++;
+        }
+        
+    }//GEN-LAST:event_LeftButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -699,7 +851,13 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DownButton;
+    private javax.swing.JButton LeftButton;
+    private javax.swing.JButton RightButton;
     private javax.swing.JSlider SaturationMaxSlider;
+    private javax.swing.JButton UpButton;
+    private javax.swing.JButton UpdateButton;
+    private javax.swing.JToggleButton VideoOnOffToggle;
     private javax.swing.JButton addValuesBtn;
     private javax.swing.JPanel cameraPanel;
     private javax.swing.JSlider hueMaxSlider;
@@ -711,9 +869,6 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
     private javax.swing.JTextField importValue;
     private javax.swing.JButton importValueBtn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -723,7 +878,7 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton manualModeToggle;
     private javax.swing.JTextField saturationMaxValue;
     private javax.swing.JSlider saturationMinSlider;
     private javax.swing.JTextField saturationMinValue;
@@ -735,23 +890,36 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
     // End of variables declaration//GEN-END:variables
 
     private byte[] getCurrentvalues() {
-        
-        
-        byte[] returnByte = new byte[8];
+
+        byte[] returnByte = new byte[20];
 
         returnByte[0] = (byte) hueMinSlider.getValue();
-        
+
         returnByte[1] = (byte) hueMaxSlider.getValue();
         returnByte[2] = (byte) saturationMinSlider.getValue();
         returnByte[3] = (byte) SaturationMaxSlider.getValue();
         returnByte[4] = (byte) valueMinSlider.getValue();
         returnByte[5] = (byte) valueMaxSlider.getValue();
-    
-        returnByte[6] = (byte) (videoStreamActive?1:0);
-        System.out.println(returnByte[6]);
-   
-       
+        returnByte[6] = (byte) (videoStreamActive ? 1 : 0);
+        returnByte[7] = (byte) (manualModeActive ? 1 : 0);
+        returnByte[8] = (byte) upValueFromGui;
+        returnByte[9] = (byte) downValueFromGui;
+        returnByte[10] = (byte) leftValueFromGui;
+        returnByte[10] = (byte) rightValueFromGui;
+        
 
+        //returnByte[6] = 6;
+        //System.out.println(returnByte[6]);
+        
+        resetValues();
         return returnByte;
+    }
+
+    private void resetValues() {
+        
+        upValueFromGui = 0;
+        downValueFromGui = 0;
+        rightValueFromGui = 0;
+        leftValueFromGui = 0;
     }
 }

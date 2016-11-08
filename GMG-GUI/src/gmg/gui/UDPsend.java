@@ -51,8 +51,11 @@ public class UDPsend {
 
     private boolean send(byte[] b) {
         boolean result = false;
+      
         DatagramPacket out = new DatagramPacket(b, b.length, HOST, PORT);
+  
         try {
+            
             s.send(out);
             result = true;
         } catch (IOException ex) {
