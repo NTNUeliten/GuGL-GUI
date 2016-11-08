@@ -905,7 +905,7 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         returnByte[8] = (byte) upValueFromGui;
         returnByte[9] = (byte) downValueFromGui;
         returnByte[10] = (byte) leftValueFromGui;
-        returnByte[10] = (byte) rightValueFromGui;
+        returnByte[11] = (byte) rightValueFromGui;
         
 
         //returnByte[6] = 6;
