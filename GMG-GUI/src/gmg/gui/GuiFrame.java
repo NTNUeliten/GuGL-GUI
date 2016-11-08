@@ -893,19 +893,18 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
 
         byte[] returnByte = new byte[20];
 
-        returnByte[0] = (byte) hueMinSlider.getValue();
-
-        returnByte[1] = (byte) hueMaxSlider.getValue();
-        returnByte[2] = (byte) saturationMinSlider.getValue();
-        returnByte[3] = (byte) SaturationMaxSlider.getValue();
-        returnByte[4] = (byte) valueMinSlider.getValue();
-        returnByte[5] = (byte) valueMaxSlider.getValue();
-        returnByte[6] = (byte) (videoStreamActive ? 1 : 0);
-        returnByte[7] = (byte) (manualModeActive ? 1 : 0);
-        returnByte[8] = (byte) upValueFromGui;
-        returnByte[9] = (byte) downValueFromGui;
-        returnByte[10] = (byte) leftValueFromGui;
-        returnByte[11] = (byte) rightValueFromGui;
+        returnByte[1] = (byte) hueMinSlider.getValue();
+        returnByte[2] = (byte) hueMaxSlider.getValue();
+        returnByte[3] = (byte) saturationMinSlider.getValue();
+        returnByte[4] = (byte) SaturationMaxSlider.getValue();
+        returnByte[5] = (byte) valueMinSlider.getValue();
+        returnByte[6] = (byte) valueMaxSlider.getValue();
+        returnByte[7] = (byte) (videoStreamActive ? 1 : 0);
+        returnByte[8] = (byte) (manualModeActive ? 1 : 0);
+        returnByte[9] = (byte) upValueFromGui;
+        returnByte[10] = (byte) downValueFromGui;
+        returnByte[11] = (byte) leftValueFromGui;
+        returnByte[12] = (byte) rightValueFromGui;
         
 
         //returnByte[6] = 6;
