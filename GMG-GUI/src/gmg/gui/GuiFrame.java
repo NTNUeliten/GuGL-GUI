@@ -20,9 +20,11 @@ public class GuiFrame extends javax.swing.JFrame {
     int valVal;
     boolean videoStreamActive;
     boolean manualModeActive;
+    boolean shootToKill;
+    boolean fire;
     private UDPsend udpSend;
     private UdpRecive UdpRecive;
-    
+
     int upValueFromGui;
     int downValueFromGui;
     int leftValueFromGui;
@@ -94,6 +96,8 @@ public class GuiFrame extends javax.swing.JFrame {
         manualModeToggle = new javax.swing.JToggleButton();
         UpButton = new javax.swing.JButton();
         DownButton = new javax.swing.JButton();
+        FireToggle = new javax.swing.JToggleButton();
+        fireButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -363,6 +367,35 @@ public class GuiFrame extends javax.swing.JFrame {
             }
         });
 
+        FireToggle.setText("AutoFire");
+        FireToggle.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                FireToggleStateChanged(evt);
+            }
+        });
+        FireToggle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FireToggleMouseClicked(evt);
+            }
+        });
+        FireToggle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FireToggleActionPerformed(evt);
+            }
+        });
+
+        fireButton.setText("Fire");
+        fireButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fireButtonMouseClicked(evt);
+            }
+        });
+        fireButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fireButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -437,9 +470,15 @@ public class GuiFrame extends javax.swing.JFrame {
                                 .addComponent(manualModeToggle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(addValuesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(sendValuesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addGap(5, 5, 5)
-                            .addComponent(UpdateButton)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(FireToggle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(fireButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(41, 41, 41)))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -519,8 +558,11 @@ public class GuiFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(UpdateButton)
-                            .addComponent(DownButton))))
-                .addContainerGap(68, Short.MAX_VALUE))
+                            .addComponent(DownButton)
+                            .addComponent(fireButton))))
+                .addGap(18, 18, 18)
+                .addComponent(FireToggle)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Engravers MT", 1, 36)); // NOI18N
@@ -747,7 +789,7 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         if (manualModeToggle.isSelected()) {
             manualModeActive = true;
             resetValues();      // Resetting values in case some shitface have
-                                // pressed manual buttons with automatic mode activated
+            // pressed manual buttons with automatic mode activated
         } else {
             manualModeActive = false;
         }
@@ -771,8 +813,8 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
 
     private void UpButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UpButtonKeyPressed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_UpButtonKeyPressed
 
     private void UpButtonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UpButtonKeyTyped
@@ -781,24 +823,24 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
 
     private void UpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpButtonMouseClicked
         // TODO add your handling code here:
-        
-        if(manualModeActive){
+
+        if (manualModeActive) {
             upValueFromGui++;
         }
     }//GEN-LAST:event_UpButtonMouseClicked
 
     private void DownButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DownButtonMouseClicked
         // TODO add your handling code here:
-        
-         if(manualModeActive){
+
+        if (manualModeActive) {
             downValueFromGui++;
         }
     }//GEN-LAST:event_DownButtonMouseClicked
 
     private void RightButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RightButtonMouseClicked
         // TODO add your handling code here:
-        
-         if(manualModeActive){
+
+        if (manualModeActive) {
             rightValueFromGui++;
         }
     }//GEN-LAST:event_RightButtonMouseClicked
@@ -809,11 +851,41 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
 
     private void LeftButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LeftButtonMouseClicked
         // TODO add your handling code here:
-         if(manualModeActive){
+        if (manualModeActive) {
             leftValueFromGui++;
         }
-        
+
     }//GEN-LAST:event_LeftButtonMouseClicked
+
+    private void FireToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_FireToggleStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FireToggleStateChanged
+
+    private void FireToggleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FireToggleMouseClicked
+        // TODO add your handling code here:
+
+        if (FireToggle.isSelected()) {
+            shootToKill = true;
+            fire = false;
+
+        } else {
+            shootToKill = false;
+        }
+    }//GEN-LAST:event_FireToggleMouseClicked
+
+    private void FireToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FireToggleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FireToggleActionPerformed
+
+    private void fireButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fireButtonActionPerformed
+
+    private void fireButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fireButtonMouseClicked
+        // TODO add your handling code here:
+
+        fire = true;
+    }//GEN-LAST:event_fireButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -852,6 +924,7 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DownButton;
+    private javax.swing.JToggleButton FireToggle;
     private javax.swing.JButton LeftButton;
     private javax.swing.JButton RightButton;
     private javax.swing.JSlider SaturationMaxSlider;
@@ -860,6 +933,7 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
     private javax.swing.JToggleButton VideoOnOffToggle;
     private javax.swing.JButton addValuesBtn;
     private javax.swing.JPanel cameraPanel;
+    private javax.swing.JButton fireButton;
     private javax.swing.JSlider hueMaxSlider;
     private javax.swing.JTextField hueMaxValue;
     private javax.swing.JSlider hueMinSlider;
@@ -905,20 +979,22 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         returnByte[10] = (byte) downValueFromGui;
         returnByte[11] = (byte) leftValueFromGui;
         returnByte[12] = (byte) rightValueFromGui;
+        returnByte[13] = (byte) (shootToKill ? 1 : 0);
+        returnByte[14] = (byte) (fire ? 1:0);
         
 
         //returnByte[6] = 6;
         //System.out.println(returnByte[6]);
-        
         resetValues();
         return returnByte;
     }
 
     private void resetValues() {
-        
+
         upValueFromGui = 0;
         downValueFromGui = 0;
         rightValueFromGui = 0;
         leftValueFromGui = 0;
+        fire = false;
     }
 }
