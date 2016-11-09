@@ -825,7 +825,7 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         // TODO add your handling code here:
 
         if (manualModeActive) {
-            upValueFromGui++;
+            upValueFromGui = upValueFromGui + 10;
         }
     }//GEN-LAST:event_UpButtonMouseClicked
 

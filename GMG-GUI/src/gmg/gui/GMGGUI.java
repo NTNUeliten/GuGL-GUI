@@ -32,7 +32,7 @@ public class GMGGUI {
         
 
        // UDPsend udpSend = new UDPsend(4000, "localhost");
-        UDPsend udpSend = new UDPsend(4000, "192.168.0.5");
+        UDPsend udpSend = new UDPsend(4000, "192.168.0.2");
         UdpRecive udpRecive = new UdpRecive(6000);
 
         GuiFrame gui = new GuiFrame();
