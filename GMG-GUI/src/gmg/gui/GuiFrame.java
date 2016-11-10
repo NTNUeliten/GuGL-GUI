@@ -98,6 +98,8 @@ public class GuiFrame extends javax.swing.JFrame {
         DownButton = new javax.swing.JButton();
         FireToggle = new javax.swing.JToggleButton();
         fireButton = new javax.swing.JButton();
+        servoYvalue = new javax.swing.JSlider();
+        servoXvalue = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -396,20 +398,44 @@ public class GuiFrame extends javax.swing.JFrame {
             }
         });
 
+        servoYvalue.setMaximum(180);
+        servoYvalue.setOrientation(javax.swing.JSlider.VERTICAL);
+        servoYvalue.setToolTipText("");
+        servoYvalue.setValue(84);
+        servoYvalue.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                servoYvalueStateChanged(evt);
+            }
+        });
+
+        servoXvalue.setMaximum(180);
+        servoXvalue.setToolTipText("");
+        servoXvalue.setValue(84);
+        servoXvalue.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                servoXvalueStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(141, 214, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LeftButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(LeftButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(servoYvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(92, 92, 92)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(DownButton)
                             .addComponent(UpButton))
@@ -481,6 +507,11 @@ public class GuiFrame extends javax.swing.JFrame {
                             .addGap(41, 41, 41)))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(587, Short.MAX_VALUE)
+                    .addComponent(servoXvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(443, 443, 443)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -489,7 +520,7 @@ public class GuiFrame extends javax.swing.JFrame {
                 .addComponent(UpButton)
                 .addGap(136, 136, 136))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jLabel4)
@@ -539,7 +570,9 @@ public class GuiFrame extends javax.swing.JFrame {
                             .addComponent(importValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(servoYvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(471, 471, 471)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -562,7 +595,12 @@ public class GuiFrame extends javax.swing.JFrame {
                             .addComponent(fireButton))))
                 .addGap(18, 18, 18)
                 .addComponent(FireToggle)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(658, Short.MAX_VALUE)
+                    .addComponent(servoXvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(24, 24, 24)))
         );
 
         jLabel1.setFont(new java.awt.Font("Engravers MT", 1, 36)); // NOI18N
@@ -887,6 +925,18 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         fire = true;
     }//GEN-LAST:event_fireButtonMouseClicked
 
+    private void servoYvalueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_servoYvalueStateChanged
+        // TODO add your handling code here:
+        
+         udpSend.sendParam(getCurrentvalues());
+    }//GEN-LAST:event_servoYvalueStateChanged
+
+    private void servoXvalueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_servoXvalueStateChanged
+        // TODO add your handling code here:
+       sendValues();
+        
+    }//GEN-LAST:event_servoXvalueStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -957,6 +1007,8 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
     private javax.swing.JSlider saturationMinSlider;
     private javax.swing.JTextField saturationMinValue;
     private javax.swing.JButton sendValuesButton;
+    private javax.swing.JSlider servoXvalue;
+    private javax.swing.JSlider servoYvalue;
     private javax.swing.JSlider valueMaxSlider;
     private javax.swing.JTextField valueMaxValue;
     private javax.swing.JSlider valueMinSlider;
@@ -981,6 +1033,8 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         returnByte[12] = (byte) rightValueFromGui;
         returnByte[13] = (byte) (shootToKill ? 1 : 0);
         returnByte[14] = (byte) (fire ? 1:0);
+        returnByte[15] = (byte) servoXvalue.getValue();
+        returnByte[16] = (byte) servoYvalue.getValue();
         
 
         //returnByte[6] = 6;
@@ -996,5 +1050,9 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         rightValueFromGui = 0;
         leftValueFromGui = 0;
         fire = false;
+    }
+
+    private void sendValues() {
+         udpSend.sendParam(getCurrentvalues());
     }
 }
