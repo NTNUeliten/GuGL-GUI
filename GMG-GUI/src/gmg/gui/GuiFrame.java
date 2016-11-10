@@ -807,14 +807,9 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         } else {
             videoStreamActive = false;
         }
-        /*
-        if(videoStreamActive == false){
-            videoStreamActive = true;
-        }
-        else
-            videoStreamActive = false;
-         */
-        //System.out.println(videoStreamActive);
+        
+         sendValues();
+        
     }//GEN-LAST:event_VideoOnOffToggleMouseClicked
 
     private void manualModeToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_manualModeToggleStateChanged
@@ -831,6 +826,8 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         } else {
             manualModeActive = false;
         }
+        
+         sendValues();
     }//GEN-LAST:event_manualModeToggleMouseClicked
 
     private void manualModeToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manualModeToggleActionPerformed
@@ -909,6 +906,7 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         } else {
             shootToKill = false;
         }
+         sendValues();
     }//GEN-LAST:event_FireToggleMouseClicked
 
     private void FireToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FireToggleActionPerformed
@@ -923,6 +921,7 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
         // TODO add your handling code here:
 
         fire = true;
+         sendValues();
     }//GEN-LAST:event_fireButtonMouseClicked
 
     private void servoYvalueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_servoYvalueStateChanged
