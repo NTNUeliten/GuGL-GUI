@@ -33,7 +33,7 @@ public class GMGGUI {
 
        // UDPsend udpSend = new UDPsend(4000, "localhost");
         UDPsend udpSend = new UDPsend(4000, "192.168.0.2");
-        UdpRecive udpRecive = new UdpRecive(6000);
+       // UdpRecive udpRecive = new UdpRecive(6000);
 
         GuiFrame gui = new GuiFrame();
         gui.setSize(200, 200);
@@ -41,7 +41,7 @@ public class GMGGUI {
 
         gui.addPanel(p);
         gui.addUDPSendSocket(udpSend);
-        gui.addUDPReciveSocket(udpRecive);
+       //zgui.addUDPReciveSocket(udpRecive);
         
         
 
