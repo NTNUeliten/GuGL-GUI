@@ -80,26 +80,21 @@ public class GuiFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         valueMinSlider = new javax.swing.JSlider();
         valueMinValue = new javax.swing.JTextField();
-        importHue = new javax.swing.JTextField();
-        importSaturation = new javax.swing.JTextField();
-        importValue = new javax.swing.JTextField();
         importValueBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         addValuesBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        LeftButton = new javax.swing.JButton();
         cameraPanel = new Panel();
         sendValuesButton = new javax.swing.JButton();
         UpdateButton = new javax.swing.JButton();
         VideoOnOffToggle = new javax.swing.JToggleButton();
-        RightButton = new javax.swing.JButton();
         manualModeToggle = new javax.swing.JToggleButton();
-        UpButton = new javax.swing.JButton();
-        DownButton = new javax.swing.JButton();
         FireToggle = new javax.swing.JToggleButton();
         fireButton = new javax.swing.JButton();
         servoYvalue = new javax.swing.JSlider();
         servoXvalue = new javax.swing.JSlider();
+        fireButton1 = new javax.swing.JButton();
+        fireButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -210,27 +205,6 @@ public class GuiFrame extends javax.swing.JFrame {
             }
         });
 
-        importHue.setText("1000");
-        importHue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                importHueActionPerformed(evt);
-            }
-        });
-
-        importSaturation.setText("1000");
-        importSaturation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                importSaturationActionPerformed(evt);
-            }
-        });
-
-        importValue.setText("1000");
-        importValue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                importValueActionPerformed(evt);
-            }
-        });
-
         importValueBtn.setText("Get Value");
         importValueBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,23 +227,6 @@ public class GuiFrame extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Settings");
-
-        LeftButton.setText("<<");
-        LeftButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LeftButtonMouseClicked(evt);
-            }
-        });
-        LeftButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LeftButtonActionPerformed(evt);
-            }
-        });
-        LeftButton.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                LeftButtonKeyPressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout cameraPanelLayout = new javax.swing.GroupLayout(cameraPanel);
         cameraPanel.setLayout(cameraPanelLayout);
@@ -313,13 +270,6 @@ public class GuiFrame extends javax.swing.JFrame {
             }
         });
 
-        RightButton.setText(">>");
-        RightButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RightButtonMouseClicked(evt);
-            }
-        });
-
         manualModeToggle.setText("Manual Mode");
         manualModeToggle.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -334,38 +284,6 @@ public class GuiFrame extends javax.swing.JFrame {
         manualModeToggle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manualModeToggleActionPerformed(evt);
-            }
-        });
-
-        UpButton.setText("^");
-        UpButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UpButtonMouseClicked(evt);
-            }
-        });
-        UpButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpButtonActionPerformed(evt);
-            }
-        });
-        UpButton.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                UpButtonKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                UpButtonKeyTyped(evt);
-            }
-        });
-
-        DownButton.setText("v");
-        DownButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DownButtonMouseClicked(evt);
-            }
-        });
-        DownButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DownButtonActionPerformed(evt);
             }
         });
 
@@ -417,31 +335,44 @@ public class GuiFrame extends javax.swing.JFrame {
             }
         });
 
+        fireButton1.setText("No kill");
+        fireButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fireButton1MouseClicked(evt);
+            }
+        });
+        fireButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fireButton1ActionPerformed(evt);
+            }
+        });
+
+        fireButton2.setText("Kill");
+        fireButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fireButton2MouseClicked(evt);
+            }
+        });
+        fireButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fireButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(141, 214, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(LeftButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(servoYvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(92, 92, 92)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DownButton)
-                            .addComponent(UpButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(RightButton)
-                        .addGap(35, 35, 35)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(servoYvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel7)
@@ -481,126 +412,113 @@ public class GuiFrame extends javax.swing.JFrame {
                             .addComponent(valueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGap(5, 5, 5)
-                                    .addComponent(VideoOnOffToggle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addComponent(importValueBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(importHue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(importSaturation, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                                .addComponent(VideoOnOffToggle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(importValue, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(manualModeToggle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(addValuesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(sendValuesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(5, 5, 5)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(FireToggle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addComponent(FireToggle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                        .addComponent(fireButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(fireButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(fireButton, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                                        .addComponent(fireButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGap(41, 41, 41)))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(587, Short.MAX_VALUE)
-                    .addComponent(servoXvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(443, 443, 443)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(servoXvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(284, 284, 284))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(UpButton)
-                .addGap(136, 136, 136))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(hueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(hueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(hueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(hueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(saturationMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(saturationMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8)
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(SaturationMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(saturationMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(valueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10)
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(valueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(valueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(valueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(importHue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(importSaturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(importValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(servoYvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(471, 471, 471)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(importValueBtn)
-                            .addComponent(addValuesBtn))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(hueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel6)
+                                        .addGap(5, 5, 5)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(hueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(hueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(hueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(saturationMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(saturationMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel8)
+                                        .addGap(5, 5, 5)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(SaturationMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(saturationMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(valueMinSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel10)
+                                        .addGap(5, 5, 5)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(valueMaxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(valueMaxValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(valueMinValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(400, 400, 400)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(importValueBtn)
+                                    .addComponent(addValuesBtn))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton1)
+                                    .addComponent(sendValuesButton))
+                                .addGap(13, 13, 13)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(VideoOnOffToggle)
+                                    .addComponent(manualModeToggle))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(UpdateButton)
+                                    .addComponent(fireButton))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(sendValuesButton))
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(VideoOnOffToggle)
-                            .addComponent(manualModeToggle)
-                            .addComponent(RightButton)
-                            .addComponent(LeftButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(UpdateButton)
-                            .addComponent(DownButton)
-                            .addComponent(fireButton))))
-                .addGap(18, 18, 18)
-                .addComponent(FireToggle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(658, Short.MAX_VALUE)
-                    .addComponent(servoXvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(24, 24, 24)))
+                            .addComponent(fireButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fireButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(FireToggle)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(servoXvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Engravers MT", 1, 36)); // NOI18N
@@ -622,109 +540,147 @@ public class GuiFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void valueMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valueMaxSliderStateChanged
+    private void fireButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireButton2ActionPerformed
         // TODO add your handling code here:
-        valueMaxValue.setText(String.valueOf(valueMaxSlider.getValue()));
-    }//GEN-LAST:event_valueMaxSliderStateChanged
+    }//GEN-LAST:event_fireButton2ActionPerformed
 
-    private void hueMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hueMinSliderStateChanged
+    private void fireButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fireButton2MouseClicked
         // TODO add your handling code here:
-        hueMinValue.setText(String.valueOf(hueMinSlider.getValue()));
-    }//GEN-LAST:event_hueMinSliderStateChanged
+    }//GEN-LAST:event_fireButton2MouseClicked
 
-    private void hueMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hueMaxSliderStateChanged
+    private void fireButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireButton1ActionPerformed
         // TODO add your handling code here:
-        hueMaxValue.setText(String.valueOf(hueMaxSlider.getValue()));
-    }//GEN-LAST:event_hueMaxSliderStateChanged
+    }//GEN-LAST:event_fireButton1ActionPerformed
 
-    private void hueMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hueMaxValueActionPerformed
+    private void fireButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fireButton1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_hueMaxValueActionPerformed
+    }//GEN-LAST:event_fireButton1MouseClicked
 
-    private void hueMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hueMinValueActionPerformed
+    private void servoXvalueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_servoXvalueStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_hueMinValueActionPerformed
+        sendValues();
+    }//GEN-LAST:event_servoXvalueStateChanged
 
-    private void saturationMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturationMaxValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_saturationMaxValueActionPerformed
-
-    private void saturationMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_saturationMinSliderStateChanged
-        // TODO add your handling code here:
-        saturationMinValue.setText(String.valueOf(saturationMinSlider.getValue()));
-    }//GEN-LAST:event_saturationMinSliderStateChanged
-
-    private void saturationMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturationMinValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_saturationMinValueActionPerformed
-
-    private void SaturationMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SaturationMaxSliderStateChanged
-        // TODO add your handling code here:
-        saturationMaxValue.setText(String.valueOf(SaturationMaxSlider.getValue()));
-    }//GEN-LAST:event_SaturationMaxSliderStateChanged
-
-    private void valueMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueMaxValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_valueMaxValueActionPerformed
-
-    private void valueMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valueMinSliderStateChanged
-        // TODO add your handling code here:
-        valueMinValue.setText(String.valueOf(valueMinSlider.getValue()));
-    }//GEN-LAST:event_valueMinSliderStateChanged
-
-    private void valueMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueMinValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_valueMinValueActionPerformed
-
-    private void importHueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importHueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_importHueActionPerformed
-
-    private void importSaturationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importSaturationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_importSaturationActionPerformed
-
-    private void importValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importValueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_importValueActionPerformed
-
-    private void importValueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importValueBtnActionPerformed
+    private void servoYvalueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_servoYvalueStateChanged
         // TODO add your handling code here:
 
-        String hue = String.valueOf(hueVal);
-        String sat = String.valueOf(satVal);
-        String val = String.valueOf(valVal);
+        udpSend.sendParam(getCurrentvalues());
+    }//GEN-LAST:event_servoYvalueStateChanged
 
-        importHue.setText(hue);
-        importSaturation.setText(sat);
-        importValue.setText(val);
+    private void fireButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fireButtonActionPerformed
 
-    }//GEN-LAST:event_importValueBtnActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void fireButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fireButtonMouseClicked
         // TODO add your handling code here:
 
-        hueMinSlider.setValue(hueVal - 6);
-        hueMaxSlider.setValue(hueVal + 6);
+        fire = true;
+        sendValues();
+    }//GEN-LAST:event_fireButtonMouseClicked
 
-        saturationMinSlider.setValue(satVal - 50);
-        SaturationMaxSlider.setValue(satVal + 50);
+    private void FireToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FireToggleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FireToggleActionPerformed
 
-        valueMinSlider.setValue(valVal - 30);
-        valueMaxSlider.setValue(valVal + 30);
+    private void FireToggleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FireToggleMouseClicked
+        // TODO add your handling code here:
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (FireToggle.isSelected()) {
+            shootToKill = true;
+            fire = false;
+            FireToggle.setText("Kill");
 
-    int setValueIncrement = 5;
+        } else {
+            shootToKill = false;
+            FireToggle.setText("No Kill");
+        }
+        sendValues();
+    }//GEN-LAST:event_FireToggleMouseClicked
+
+    private void FireToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_FireToggleStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FireToggleStateChanged
+
+    private void manualModeToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manualModeToggleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manualModeToggleActionPerformed
+
+    private void manualModeToggleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manualModeToggleMouseClicked
+        // TODO add your handling code here:
+
+        if (manualModeToggle.isSelected()) {
+            manualModeActive = true;
+            resetValues();      // Resetting values in case some shitface have
+            // pressed manual buttons with automatic mode activated
+        } else {
+            manualModeActive = false;
+        }
+
+        sendValues();
+    }//GEN-LAST:event_manualModeToggleMouseClicked
+
+    private void manualModeToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_manualModeToggleStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manualModeToggleStateChanged
+
+    private void VideoOnOffToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VideoOnOffToggleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VideoOnOffToggleActionPerformed
+
+    private void VideoOnOffToggleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VideoOnOffToggleMouseClicked
+        // TODO add your handling code here:
+
+        if (VideoOnOffToggle.isSelected()) {
+            videoStreamActive = true;
+        } else {
+            videoStreamActive = false;
+        }
+
+        sendValues();
+    }//GEN-LAST:event_VideoOnOffToggleMouseClicked
+
+    private void VideoOnOffToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_VideoOnOffToggleStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VideoOnOffToggleStateChanged
+
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
+        try {
+            // TODO add your handling code here:
+
+            byte[] b = UdpRecive.receiveParam();
+
+        } catch (IOException ex) {
+            Logger.getLogger(GuiFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_UpdateButtonActionPerformed
+
+    private void sendValuesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendValuesButtonActionPerformed
+        // TODO add your handling code here:
+
+        udpSend.sendParam(getCurrentvalues());
+
+        /*
+        int i = 255;
+        byte b = (byte) i;
+        int s = b & (0xff);
+
+        System.out.println("" + i + " " + b +" "  +s);
+
+        byte signedByte = b;
+        int unsignedByte = signedByte & (0xff);
+
+        System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
+        */
+    }//GEN-LAST:event_sendValuesButtonActionPerformed
 
     private void addValuesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addValuesBtnActionPerformed
         // TODO add your handling code here:
@@ -751,190 +707,85 @@ public class GuiFrame extends javax.swing.JFrame {
             valueMinSlider.setValue((valVal - setValueIncrement));
         }
         // messageField.setText("New values added");
-
     }//GEN-LAST:event_addValuesBtnActionPerformed
 
-    private void sendValuesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendValuesButtonActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        udpSend.sendParam(getCurrentvalues());
+        hueMinSlider.setValue(hueVal - 6);
+        hueMaxSlider.setValue(hueVal + 6);
 
-        /*
-        int i = 255;
-        byte b = (byte) i;
-        int s = b & (0xff);
-    
-        System.out.println("" + i + " " + b +" "  +s);
-        
-        byte signedByte = b;
-int unsignedByte = signedByte & (0xff);
+        saturationMinSlider.setValue(satVal - 50);
+        SaturationMaxSlider.setValue(satVal + 50);
 
-System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
-         */
+        valueMinSlider.setValue(valVal - 30);
+        valueMaxSlider.setValue(valVal + 30);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    }//GEN-LAST:event_sendValuesButtonActionPerformed
-
-    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
-        try {
-            // TODO add your handling code here:
-
-            byte[] b = UdpRecive.receiveParam();
-
-        } catch (IOException ex) {
-            Logger.getLogger(GuiFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-    }//GEN-LAST:event_UpdateButtonActionPerformed
-
-    private void VideoOnOffToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VideoOnOffToggleActionPerformed
+    private void importValueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importValueBtnActionPerformed
         // TODO add your handling code here:
 
+        String hue = String.valueOf(hueVal);
+        String sat = String.valueOf(satVal);
+        String val = String.valueOf(valVal);
 
-    }//GEN-LAST:event_VideoOnOffToggleActionPerformed
+    }//GEN-LAST:event_importValueBtnActionPerformed
 
-    private void VideoOnOffToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_VideoOnOffToggleStateChanged
+    private void valueMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueMinValueActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_valueMinValueActionPerformed
 
-
-    }//GEN-LAST:event_VideoOnOffToggleStateChanged
-
-    private void VideoOnOffToggleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VideoOnOffToggleMouseClicked
+    private void valueMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valueMinSliderStateChanged
         // TODO add your handling code here:
+        valueMinValue.setText(String.valueOf(valueMinSlider.getValue()));
+    }//GEN-LAST:event_valueMinSliderStateChanged
 
-        if (VideoOnOffToggle.isSelected()) {
-            videoStreamActive = true;
-        } else {
-            videoStreamActive = false;
-        }
-        
-         sendValues();
-        
-    }//GEN-LAST:event_VideoOnOffToggleMouseClicked
-
-    private void manualModeToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_manualModeToggleStateChanged
+    private void valueMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueMaxValueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_manualModeToggleStateChanged
+    }//GEN-LAST:event_valueMaxValueActionPerformed
 
-    private void manualModeToggleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manualModeToggleMouseClicked
+    private void SaturationMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SaturationMaxSliderStateChanged
         // TODO add your handling code here:
+        saturationMaxValue.setText(String.valueOf(SaturationMaxSlider.getValue()));
+    }//GEN-LAST:event_SaturationMaxSliderStateChanged
 
-        if (manualModeToggle.isSelected()) {
-            manualModeActive = true;
-            resetValues();      // Resetting values in case some shitface have
-            // pressed manual buttons with automatic mode activated
-        } else {
-            manualModeActive = false;
-        }
-        
-         sendValues();
-    }//GEN-LAST:event_manualModeToggleMouseClicked
-
-    private void manualModeToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manualModeToggleActionPerformed
+    private void saturationMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturationMinValueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_manualModeToggleActionPerformed
+    }//GEN-LAST:event_saturationMinValueActionPerformed
 
-    private void LeftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeftButtonActionPerformed
+    private void saturationMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_saturationMinSliderStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_LeftButtonActionPerformed
+        saturationMinValue.setText(String.valueOf(saturationMinSlider.getValue()));
+    }//GEN-LAST:event_saturationMinSliderStateChanged
 
-    private void UpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpButtonActionPerformed
+    private void saturationMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturationMaxValueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UpButtonActionPerformed
+    }//GEN-LAST:event_saturationMaxValueActionPerformed
 
-    private void DownButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DownButtonActionPerformed
+    private void hueMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hueMinValueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DownButtonActionPerformed
+    }//GEN-LAST:event_hueMinValueActionPerformed
 
-    private void UpButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UpButtonKeyPressed
+    private void hueMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hueMaxValueActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_hueMaxValueActionPerformed
 
-
-    }//GEN-LAST:event_UpButtonKeyPressed
-
-    private void UpButtonKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UpButtonKeyTyped
+    private void hueMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hueMaxSliderStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_UpButtonKeyTyped
+        hueMaxValue.setText(String.valueOf(hueMaxSlider.getValue()));
+    }//GEN-LAST:event_hueMaxSliderStateChanged
 
-    private void UpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpButtonMouseClicked
+    private void hueMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hueMinSliderStateChanged
         // TODO add your handling code here:
+        hueMinValue.setText(String.valueOf(hueMinSlider.getValue()));
+    }//GEN-LAST:event_hueMinSliderStateChanged
 
-        if (manualModeActive) {
-            upValueFromGui = upValueFromGui + 10;
-        }
-    }//GEN-LAST:event_UpButtonMouseClicked
-
-    private void DownButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DownButtonMouseClicked
+    private void valueMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valueMaxSliderStateChanged
         // TODO add your handling code here:
+        valueMaxValue.setText(String.valueOf(valueMaxSlider.getValue()));
+    }//GEN-LAST:event_valueMaxSliderStateChanged
 
-        if (manualModeActive) {
-            downValueFromGui++;
-        }
-    }//GEN-LAST:event_DownButtonMouseClicked
-
-    private void RightButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RightButtonMouseClicked
-        // TODO add your handling code here:
-
-        if (manualModeActive) {
-            rightValueFromGui++;
-        }
-    }//GEN-LAST:event_RightButtonMouseClicked
-
-    private void LeftButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LeftButtonKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LeftButtonKeyPressed
-
-    private void LeftButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LeftButtonMouseClicked
-        // TODO add your handling code here:
-        if (manualModeActive) {
-            leftValueFromGui++;
-        }
-
-    }//GEN-LAST:event_LeftButtonMouseClicked
-
-    private void FireToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_FireToggleStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FireToggleStateChanged
-
-    private void FireToggleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FireToggleMouseClicked
-        // TODO add your handling code here:
-
-        if (FireToggle.isSelected()) {
-            shootToKill = true;
-            fire = false;
-
-        } else {
-            shootToKill = false;
-        }
-         sendValues();
-    }//GEN-LAST:event_FireToggleMouseClicked
-
-    private void FireToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FireToggleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FireToggleActionPerformed
-
-    private void fireButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fireButtonActionPerformed
-
-    private void fireButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fireButtonMouseClicked
-        // TODO add your handling code here:
-
-        fire = true;
-         sendValues();
-    }//GEN-LAST:event_fireButtonMouseClicked
-
-    private void servoYvalueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_servoYvalueStateChanged
-        // TODO add your handling code here:
-        
-         udpSend.sendParam(getCurrentvalues());
-    }//GEN-LAST:event_servoYvalueStateChanged
-
-    private void servoXvalueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_servoXvalueStateChanged
-        // TODO add your handling code here:
-       sendValues();
-        
-    }//GEN-LAST:event_servoXvalueStateChanged
+    int setValueIncrement = 5;
 
     /**
      * @param args the command line arguments
@@ -972,24 +823,19 @@ System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton DownButton;
     private javax.swing.JToggleButton FireToggle;
-    private javax.swing.JButton LeftButton;
-    private javax.swing.JButton RightButton;
     private javax.swing.JSlider SaturationMaxSlider;
-    private javax.swing.JButton UpButton;
     private javax.swing.JButton UpdateButton;
     private javax.swing.JToggleButton VideoOnOffToggle;
     private javax.swing.JButton addValuesBtn;
     private javax.swing.JPanel cameraPanel;
     private javax.swing.JButton fireButton;
+    private javax.swing.JButton fireButton1;
+    private javax.swing.JButton fireButton2;
     private javax.swing.JSlider hueMaxSlider;
     private javax.swing.JTextField hueMaxValue;
     private javax.swing.JSlider hueMinSlider;
     private javax.swing.JTextField hueMinValue;
-    private javax.swing.JTextField importHue;
-    private javax.swing.JTextField importSaturation;
-    private javax.swing.JTextField importValue;
     private javax.swing.JButton importValueBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
