@@ -95,12 +95,30 @@ public class GuiFrame extends javax.swing.JFrame {
         servoXvalue = new javax.swing.JSlider();
         fireButton1 = new javax.swing.JButton();
         fireButton2 = new javax.swing.JButton();
+        MiddleWiundowVal = new javax.swing.JTextField();
+        MiddleWindowSlider = new javax.swing.JSlider();
+        jLabel11 = new javax.swing.JLabel();
+        ShootingWindowSlider = new javax.swing.JSlider();
+        ShootingWindowVal = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        LowFactorVal = new javax.swing.JTextField();
+        HighFactorSlider = new javax.swing.JSlider();
+        jLabel13 = new javax.swing.JLabel();
+        HighFactorVal = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        LowFactorSlider = new javax.swing.JSlider();
+        timeLowTextTing = new javax.swing.JTextField();
+        TimeHighSlider = new javax.swing.JSlider();
+        jLabel15 = new javax.swing.JLabel();
+        TimeHigh = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        timeLowSlider = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         valueMaxSlider.setMaximum(255);
-        valueMaxSlider.setValue(206);
+        valueMaxSlider.setValue(255);
         valueMaxSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 valueMaxSliderStateChanged(evt);
@@ -117,7 +135,7 @@ public class GuiFrame extends javax.swing.JFrame {
         });
 
         hueMaxSlider.setMaximum(255);
-        hueMaxSlider.setValue(92);
+        hueMaxSlider.setValue(45);
         hueMaxSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 hueMaxSliderStateChanged(evt);
@@ -155,7 +173,7 @@ public class GuiFrame extends javax.swing.JFrame {
 
         saturationMinSlider.setMaximum(255);
         saturationMinSlider.setToolTipText("");
-        saturationMinSlider.setValue(25);
+        saturationMinSlider.setValue(112);
         saturationMinSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 saturationMinSliderStateChanged(evt);
@@ -171,7 +189,7 @@ public class GuiFrame extends javax.swing.JFrame {
 
         SaturationMaxSlider.setMaximum(255);
         SaturationMaxSlider.setToolTipText("");
-        SaturationMaxSlider.setValue(125);
+        SaturationMaxSlider.setValue(255);
         SaturationMaxSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 SaturationMaxSliderStateChanged(evt);
@@ -240,6 +258,11 @@ public class GuiFrame extends javax.swing.JFrame {
         );
 
         sendValuesButton.setText("Send values");
+        sendValuesButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sendValuesButtonMouseClicked(evt);
+            }
+        });
         sendValuesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sendValuesButtonActionPerformed(evt);
@@ -359,18 +382,163 @@ public class GuiFrame extends javax.swing.JFrame {
             }
         });
 
+        MiddleWiundowVal.setText("1000");
+        MiddleWiundowVal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MiddleWiundowValActionPerformed(evt);
+            }
+        });
+
+        MiddleWindowSlider.setMaximum(30);
+        MiddleWindowSlider.setMinorTickSpacing(20);
+        MiddleWindowSlider.setToolTipText("");
+        MiddleWindowSlider.setValue(11);
+        MiddleWindowSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                MiddleWindowSliderStateChanged(evt);
+            }
+        });
+
+        jLabel11.setText("Shooting Window");
+
+        ShootingWindowSlider.setMaximum(50);
+        ShootingWindowSlider.setToolTipText("");
+        ShootingWindowSlider.setValue(24);
+        ShootingWindowSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ShootingWindowSliderStateChanged(evt);
+            }
+        });
+
+        ShootingWindowVal.setText("1000");
+        ShootingWindowVal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShootingWindowValActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Middle Window");
+
+        LowFactorVal.setText("1000");
+        LowFactorVal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LowFactorValActionPerformed(evt);
+            }
+        });
+
+        HighFactorSlider.setToolTipText("");
+        HighFactorSlider.setValue(44);
+        HighFactorSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                HighFactorSliderStateChanged(evt);
+            }
+        });
+
+        jLabel13.setText("LowFactor");
+
+        HighFactorVal.setText("1000");
+        HighFactorVal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HighFactorValActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("HighFactor");
+
+        LowFactorSlider.setToolTipText("");
+        LowFactorSlider.setValue(27);
+        LowFactorSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                LowFactorSliderStateChanged(evt);
+            }
+        });
+
+        timeLowTextTing.setText("1000");
+        timeLowTextTing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeLowTextTingActionPerformed(evt);
+            }
+        });
+
+        TimeHighSlider.setMaximum(150);
+        TimeHighSlider.setToolTipText("");
+        TimeHighSlider.setValue(79);
+        TimeHighSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TimeHighSliderStateChanged(evt);
+            }
+        });
+
+        jLabel15.setText("TimeToPassLow");
+
+        TimeHigh.setText("1000");
+        TimeHigh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TimeHighActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("TimeToPassHigh");
+
+        timeLowSlider.setToolTipText("");
+        timeLowSlider.setValue(34);
+        timeLowSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                timeLowSliderStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(141, 214, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(HighFactorSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HighFactorVal, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel14)
+                                            .addComponent(LowFactorSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LowFactorVal, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(MiddleWindowSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel13))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(MiddleWiundowVal, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel12)
+                                            .addComponent(ShootingWindowSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ShootingWindowVal, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(TimeHighSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(TimeHigh, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel16)
+                                            .addComponent(timeLowSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(timeLowTextTing, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel15))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(servoYvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,7 +614,48 @@ public class GuiFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(cameraPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(ShootingWindowSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel12))
+                                    .addComponent(ShootingWindowVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(5, 5, 5)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(MiddleWindowSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(LowFactorVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(LowFactorSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel14)
+                                                .addGap(5, 5, 5)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(HighFactorSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(HighFactorVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(MiddleWiundowVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(timeLowTextTing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(timeLowSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel16)
+                                        .addGap(5, 5, 5)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(TimeHighSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(TimeHigh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(servoYvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -518,7 +727,7 @@ public class GuiFrame extends javax.swing.JFrame {
                         .addComponent(FireToggle)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(servoXvalue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Engravers MT", 1, 36)); // NOI18N
@@ -679,7 +888,7 @@ public class GuiFrame extends javax.swing.JFrame {
         int unsignedByte = signedByte & (0xff);
 
         System.out.println("Signed: " + signedByte + " Unsigned: " + unsignedByte);
-        */
+         */
     }//GEN-LAST:event_sendValuesButtonActionPerformed
 
     private void addValuesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addValuesBtnActionPerformed
@@ -738,6 +947,7 @@ public class GuiFrame extends javax.swing.JFrame {
     private void valueMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valueMinSliderStateChanged
         // TODO add your handling code here:
         valueMinValue.setText(String.valueOf(valueMinSlider.getValue()));
+        sendValues();
     }//GEN-LAST:event_valueMinSliderStateChanged
 
     private void valueMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valueMaxValueActionPerformed
@@ -747,6 +957,7 @@ public class GuiFrame extends javax.swing.JFrame {
     private void SaturationMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SaturationMaxSliderStateChanged
         // TODO add your handling code here:
         saturationMaxValue.setText(String.valueOf(SaturationMaxSlider.getValue()));
+        sendValues();
     }//GEN-LAST:event_SaturationMaxSliderStateChanged
 
     private void saturationMinValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturationMinValueActionPerformed
@@ -756,6 +967,7 @@ public class GuiFrame extends javax.swing.JFrame {
     private void saturationMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_saturationMinSliderStateChanged
         // TODO add your handling code here:
         saturationMinValue.setText(String.valueOf(saturationMinSlider.getValue()));
+        sendValues();
     }//GEN-LAST:event_saturationMinSliderStateChanged
 
     private void saturationMaxValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturationMaxValueActionPerformed
@@ -773,17 +985,95 @@ public class GuiFrame extends javax.swing.JFrame {
     private void hueMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hueMaxSliderStateChanged
         // TODO add your handling code here:
         hueMaxValue.setText(String.valueOf(hueMaxSlider.getValue()));
+        sendValues();
     }//GEN-LAST:event_hueMaxSliderStateChanged
 
     private void hueMinSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_hueMinSliderStateChanged
         // TODO add your handling code here:
         hueMinValue.setText(String.valueOf(hueMinSlider.getValue()));
+        sendValues();
     }//GEN-LAST:event_hueMinSliderStateChanged
 
     private void valueMaxSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_valueMaxSliderStateChanged
         // TODO add your handling code here:
         valueMaxValue.setText(String.valueOf(valueMaxSlider.getValue()));
+        sendValues();
     }//GEN-LAST:event_valueMaxSliderStateChanged
+
+    private void MiddleWiundowValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MiddleWiundowValActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MiddleWiundowValActionPerformed
+
+    private void ShootingWindowSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ShootingWindowSliderStateChanged
+        // TODO add your handling code here:
+
+        float shootingWindowValue = ShootingWindowSlider.getValue() / 10f;
+        ShootingWindowVal.setText(String.valueOf(shootingWindowValue));
+        sendValues();
+
+    }//GEN-LAST:event_ShootingWindowSliderStateChanged
+
+    private void ShootingWindowValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShootingWindowValActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShootingWindowValActionPerformed
+
+    private void MiddleWindowSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MiddleWindowSliderStateChanged
+        // TODO add your handling code here:
+
+        float MiddleWindowValue = MiddleWindowSlider.getValue();
+        MiddleWiundowVal.setText(String.valueOf(MiddleWindowValue));
+        sendValues();
+    }//GEN-LAST:event_MiddleWindowSliderStateChanged
+
+    private void LowFactorValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LowFactorValActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LowFactorValActionPerformed
+
+    private void HighFactorSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_HighFactorSliderStateChanged
+        // TODO add your handling code here:
+        float highValue = HighFactorSlider.getValue() / 100f;
+        HighFactorVal.setText(String.valueOf(highValue));
+        sendValues();
+    }//GEN-LAST:event_HighFactorSliderStateChanged
+
+    private void HighFactorValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HighFactorValActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HighFactorValActionPerformed
+
+    private void LowFactorSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_LowFactorSliderStateChanged
+        // TODO add your handling code here:
+        float lowFactor = LowFactorSlider.getValue() / 100f;
+        LowFactorVal.setText(String.valueOf(lowFactor));
+        sendValues();
+    }//GEN-LAST:event_LowFactorSliderStateChanged
+
+    private void sendValuesButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendValuesButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sendValuesButtonMouseClicked
+
+    private void timeLowTextTingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeLowTextTingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_timeLowTextTingActionPerformed
+
+    private void TimeHighSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TimeHighSliderStateChanged
+        // TODO add your handling code here:
+
+        float timeHigh = TimeHighSlider.getValue();
+        TimeHigh.setText(String.valueOf(timeHigh));
+        sendValues();
+    }//GEN-LAST:event_TimeHighSliderStateChanged
+
+    private void TimeHighActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeHighActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TimeHighActionPerformed
+
+    private void timeLowSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_timeLowSliderStateChanged
+        // TODO add your handling code here:
+
+        float timeLow = timeLowSlider.getValue();
+        this.timeLowTextTing.setText(String.valueOf(timeLow));
+        sendValues();
+    }//GEN-LAST:event_timeLowSliderStateChanged
 
     int setValueIncrement = 5;
 
@@ -824,7 +1114,17 @@ public class GuiFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton FireToggle;
+    private javax.swing.JSlider HighFactorSlider;
+    private javax.swing.JTextField HighFactorVal;
+    private javax.swing.JSlider LowFactorSlider;
+    private javax.swing.JTextField LowFactorVal;
+    private javax.swing.JSlider MiddleWindowSlider;
+    private javax.swing.JTextField MiddleWiundowVal;
     private javax.swing.JSlider SaturationMaxSlider;
+    private javax.swing.JSlider ShootingWindowSlider;
+    private javax.swing.JTextField ShootingWindowVal;
+    private javax.swing.JTextField TimeHigh;
+    private javax.swing.JSlider TimeHighSlider;
     private javax.swing.JButton UpdateButton;
     private javax.swing.JToggleButton VideoOnOffToggle;
     private javax.swing.JButton addValuesBtn;
@@ -840,6 +1140,12 @@ public class GuiFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -854,6 +1160,8 @@ public class GuiFrame extends javax.swing.JFrame {
     private javax.swing.JButton sendValuesButton;
     private javax.swing.JSlider servoXvalue;
     private javax.swing.JSlider servoYvalue;
+    private javax.swing.JSlider timeLowSlider;
+    private javax.swing.JTextField timeLowTextTing;
     private javax.swing.JSlider valueMaxSlider;
     private javax.swing.JTextField valueMaxValue;
     private javax.swing.JSlider valueMinSlider;
@@ -862,7 +1170,7 @@ public class GuiFrame extends javax.swing.JFrame {
 
     private byte[] getCurrentvalues() {
 
-        byte[] returnByte = new byte[20];
+        byte[] returnByte = new byte[25];
 
         returnByte[1] = (byte) hueMinSlider.getValue();
         returnByte[2] = (byte) hueMaxSlider.getValue();
@@ -877,10 +1185,15 @@ public class GuiFrame extends javax.swing.JFrame {
         returnByte[11] = (byte) leftValueFromGui;
         returnByte[12] = (byte) rightValueFromGui;
         returnByte[13] = (byte) (shootToKill ? 1 : 0);
-        returnByte[14] = (byte) (fire ? 1:0);
+        returnByte[14] = (byte) (fire ? 1 : 0);
         returnByte[15] = (byte) servoXvalue.getValue();
         returnByte[16] = (byte) servoYvalue.getValue();
-        
+        returnByte[17] = (byte) ShootingWindowSlider.getValue();
+        returnByte[18] = (byte) MiddleWindowSlider.getValue();
+        returnByte[19] = (byte) LowFactorSlider.getValue();
+        returnByte[20] = (byte) HighFactorSlider.getValue();
+        returnByte[21] = (byte) timeLowSlider.getValue();
+        returnByte[22] = (byte) TimeHighSlider.getValue();
 
         //returnByte[6] = 6;
         //System.out.println(returnByte[6]);
@@ -898,6 +1211,7 @@ public class GuiFrame extends javax.swing.JFrame {
     }
 
     private void sendValues() {
-         udpSend.sendParam(getCurrentvalues());
+        udpSend.sendParam(getCurrentvalues());
     }
+
 }

@@ -26,7 +26,7 @@ public class GMGGUI {
         gui.addPanel(p);
 
         // Creating the UDP send class, and making it available from the GUI.
-        UDPsend udpSend = new UDPsend(4000, "192.168.0.2");
+        UDPsend udpSend = new UDPsend(4000, "158.38.142.135");
         gui.addUDPSendSocket(udpSend);
 
         // UDP recive, for future incomming videostream
